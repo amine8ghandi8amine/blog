@@ -1,0 +1,646 @@
+            ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀▀█ ▒█░▄▀           　 
+            ▒█░░░ ▒█░░▒█ ▒█░░▒█ ▒█▀▄░           　  
+            ▒█▄▄█ ▒█▄▄▄█ ▒█▄▄▄█ ▒█░▒█ 　 
+                    
+                                    ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀▀█ ▒█░▄▀ 
+                                    ▒█▀▀▄ ▒█░░▒█ ▒█░░▒█ ▒█▀▄░
+                                    ▒█▄▄█ ▒█▄▄▄█ ▒█▄▄▄█ ▒█░▒█ 
+
+
+
+
+                    ╭━━╮╱╱╱╱╭━━┳╮╱╱╱╱╱╭╮╱╱╱╭━━┳╮
+                    ╰╮╮┣━┳━╮┃━━┫╰┳━┳━╮┃╰┳┳╮┃━━┫╰┳━┳━╮
+                    ╭┻╯┃╋┃━┫┣━━┃╭┫┻┫╋┃┃╋┃┃┃┣━━┃╭┫┻┫╋┃
+                    ╰━━┻━┻━╯╰━━┻━┻━┫╭╯╰━╋╮┃╰━━┻━┻━┫╭╯
+                    ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰╯╱╱╱╰━╯╱╱╱╱╱╱╱╰╯
+ℙ𝕒𝕥𝕙 :
+Path of the file
+    open new terminale
+        
+Sᴛᴇᴘ 0
+--------------------ℂ𝕠𝕕𝕖 -----------------
+        vagrant init
+        
+        vagrant up --provision
+
+        git Commande line
+
+        php artisan make:auth
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖  
+
+ℙ𝕒𝕥𝕙 :
+.env
+        
+Sᴛᴇᴘ 1
+--------------------ℂ𝕠𝕕𝕖 -----------------
+        L1: CHANGE DB_DATABASE=homesead
+        TO DB_DATABASE=socialNet2
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖  
+
+ℙ𝕒𝕥𝕙 :
+your database
+        
+Sᴛᴇᴘ 2
+--------------------ℂ𝕠𝕕𝕖 -----------------
+        L2: CREATE DATABASE socialNet2;
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+        
+Sᴛᴇᴘ 3
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L3: php artisan migrate
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖  
+
+ℙ𝕒𝕥𝕙 :
+database/migration/2014.....create_users_table.php
+    class CreateUsersTable
+        public function up
+Sᴛᴇᴘ 3
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    /*
+            L4: ADDING A ROW OF TABLE users CALL username 
+            MAXIMUM 32 CHARACTERS
+            */ 
+            $table->string('username', 32);
+            /*
+            L5: ADDING A ROW OF TABLE users CALL DOB
+            MEANING DATE OF BIRD
+            TYPE date
+            */ 
+    $table->date('DOB');
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖  
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+        
+Sᴛᴇᴘ 3
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L4: php artisan make:auth
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+file path
+resources/views/auth/register.blade.php
+        
+Sᴛᴇᴘ 4
+--------------------ℂ𝕠𝕕𝕖 -----------------
+                        {{-- 
+                        L5: ADD username FIELD
+                         --}}
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">Username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        {{-- 
+                        L6: ADD DOB FIELD
+                         --}}
+                        
+                        <div class="form-group{{ $errors->has('DOB') ? ' has-error' : '' }}">
+                            <label for="DOB" class="col-md-4 control-label">Date Of Birth</label>
+
+                            <div class="col-md-6">
+                                <input id="DOB" type="date" class="form-control" name="DOB" value="{{ old('DOB') }}" required autofocus>
+
+                                @if ($errors->has('DOB'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('DOB') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+app/Http/Controlers/Auth/RegisterController.php
+    class RegisterController  
+          protected function validator
+        
+Sᴛᴇᴘ 5
+--------------------ℂ𝕠𝕕𝕖 -----------------
+            L7: MAKE A VALIDATOR OF THE FORMS
+            'username' => 'required|max:255',
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+app/Http/Controlers/Auth/RegisterController.php
+    class RegisterController  
+          protected function create
+        
+Sᴛᴇᴘ 6
+--------------------ℂ𝕠𝕕𝕖 -----------------
+            L8: MAKE A CREATION IN THE DATABASE
+            'username' => $data['username'],
+            'DOB' => $data['DOB'],
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+ℙ𝕒𝕥𝕙 :
+app/Http/Providers/User.php
+    class User
+          protected $fillable
+        
+Sᴛᴇᴘ 7
+--------------------ℂ𝕠𝕕𝕖 -----------------
+            /*
+            L9: ADD A FILLABLE FORM username AND DOB
+            TO 'name', 'email', 'password',
+            */
+            'username', 'DOB','name', 'email', 'password',
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖  
+
+ℙ𝕒𝕥𝕙 :
+vendor/laravel/framework/src/Illuminate/Foundation/Auth
+    trait AuthenticatesUsers
+        public function username
+Sᴛᴇᴘ 8
+--------------------ℂ𝕠𝕕𝕖 -----------------
+        /*
+        L10: CHANGE THE LOGIN BY EMAIL -> return 'email';
+        TO LOGIN BY USERNAME
+        */
+        return 'username';
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖  
+
+
+ℙ𝕒𝕥𝕙 :
+file path
+resources/views/auth/login.blade.php
+        
+Sᴛᴇᴘ 9
+--------------------ℂ𝕠𝕕𝕖 -----------------
+                        {{-- 
+                        L11: CHANGE email LOGIN TO username LOGIN
+                        
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                         --}}
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">Username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+        
+Sᴛᴇᴘ 10
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L12: php artisan make:controller ProfileController
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+routes/web.php
+        
+Sᴛᴇᴘ 11
+--------------------ℂ𝕠𝕕𝕖 -----------------
+            /* 
+L13: MAKE A ROUTR TO THE  profile/ANYUSERNAME
+AND ACTIVE THE profile METHODE FROM ProfileController CLASS
+*/
+Route::get('/profile/{username}', 'ProfileController@profile');
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+
+ℙ𝕒𝕥𝕙 :
+app/Http/Controllers/ProfileController.php
+    class ProfileController
+        
+Sᴛᴇᴘ 12
+--------------------ℂ𝕠𝕕𝕖 -----------------
+/*
+L14: USE THE ELOQUENT DATABASE 
+*/
+use App\User;
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+
+ℙ𝕒𝕥𝕙 :
+app/Http/Controllers/ProfileController.php
+    class ProfileController
+        public function profile($username)
+        
+        
+Sᴛᴇᴘ 13
+--------------------ℂ𝕠𝕕𝕖 -----------------
+        /*
+        L15: $user = FETCH DATA WHERE username = $username
+        */
+        $user = User::whereUsername($username)->first();
+        
+        /*
+        L16: return The user/profile.blade.php
+        SEND user VARIABLE TO THE VIEW
+        */
+        return view('user.profile', compact('user'));
+        
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+
+file path
+resources/views/auth/user/profile.blade.php        
+        
+Sᴛᴇᴘ 14
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+{{-- L17:MAKING THE PROFILE PAGE --}}
+{{-- EXTANDING THE BACKBONES OF THE PAGE --}}
+@extends('layouts.app')
+
+
+{{-- SENDING A CONTENT TO THE BODY @content --}}
+@section('content')
+    <div class="row">
+    
+        <div class="col-md-6 col-md-offset-3">
+        
+            <div class="panel-body text-center">
+                
+                <img class="profile-img" src="http://www.axgig.com/images/75415335926951503320_thumb.jpeg" />
+                
+                <h1>{{$user->username}}</h1>
+                
+                <p>
+                {{$user->email}}
+                <br />
+                
+                {{-- HELPING TO COUNTING THE AGE WITH Carbon\Carbon --}}
+                
+                {{$user->DOB->age}} years old
+                
+                <br />
+                <button class="btn btn-success">Follow me</button>
+                </p>
+            </div>
+        
+        </div>
+    
+    </div>
+@endsection
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+app/Http/Providers/User.php
+    class User
+        
+Sᴛᴇᴘ 15
+--------------------ℂ𝕠𝕕𝕖 -----------------
+     /*
+     L18:NEW ATTRIBUTE THAT WILL USING Carbon\Carbon
+     AND ADD A DATE 'DOB',
+     */
+     /**
+     * THE NEW ATTRIBUTE THAT WILL USING Carbon\Carbon
+     *
+     * @var array
+     */
+    protected $dates = [
+        
+        'DOB',
+    ];
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+        
+Sᴛᴇᴘ 16
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L12: MAKE A MIGRATION FILE THAT CREATE posts TABLE
+    php artisan make:migration create_posts_table --create=posts
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+
+
+        
+ℙ𝕒𝕥𝕙 :
+database/migration/2014.....create_posts_table.php
+    class CreatePostsTable
+        public function up
+Sᴛᴇᴘ 17
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    /*
+            L20: ADDING RELATIONAL ROW TO BE IN RELATION WITH user->id ROW
+            */ 
+            $table->integer('user_id');
+            /*
+            L21: ADDING A ROW OF TABLE users CALL content
+            FOR THE CONTENT OF THE PAGE
+            */ 
+            $table->text('content');
+            
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖     
+
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+        
+Sᴛᴇᴘ 17
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L22: MODIFY THE TALE posts TO articles
+    php artisan make:migration modify_name_of_table_posts_to_articles
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖   
+
+
+
+ℙ𝕒𝕥𝕙 :
+database/migration/2017.....modify_name_of_table_posts_to_articles.php
+    class ModifyNameOfTablePostsToArticles
+        public function up
+Sᴛᴇᴘ 18
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+    //L23: RENAMING
+    Schema::rename('posts','articles');
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+database/migration/2017.....modify_name_of_table_posts_to_articles.php
+    class ModifyNameOfTablePostsToArticles
+        public function down
+Sᴛᴇᴘ 19
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+    //L24: REVERSE THE RENAMING
+    Schema::rename('articles', 'posts');
+    
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+          
+Sᴛᴇᴘ 20
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L23: ACTIVE THE MODIFICATION OF THE NAME OF THE TABLE
+    php artisan migration
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+              
+Sᴛᴇᴘ 21
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L24: MODIFING THE articles TABLE AND ADDING 2 ROWS 
+    php artisan make:migration add_live_and_post_on_fields_to_articles --table=articles
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖   
+
+ℙ𝕒𝕥𝕙 :
+database/migration/2017.....add_live_and_post_on_fields_to_articles.php
+    class ModifyNameOfTablePostsToArticles
+        public function up
+Sᴛᴇᴘ 22
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+    //L25: ADDING live AND post_on FIELD TO artices TABLE
+            $table->boolean('live')->default(0);
+            $table->timestamp('post_on')->nullable();
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+database/migration/2017.....add_live_and_post_on_fields_to_articles.php
+    class ModifyNameOfTablePostsToArticles
+        public function down
+Sᴛᴇᴘ 23
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+    //26: DROPING THE live AND post_on ROWS
+            $table->dropColumn(['live', 'post_on']);
+    
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+          
+Sᴛᴇᴘ 24
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L27: ACTIVE THE MODIFICATION OF THE articles TABLE
+    php artisan migration
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+          
+Sᴛᴇᴘ 25
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L28: ACTIVE THE MODIFICATION OF THE articles TABLE
+    php artisan controller ArticlesController
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+routes/web.php
+        
+Sᴛᴇᴘ 26
+--------------------ℂ𝕠𝕕𝕖 -----------------
+/*
+L29: CREATE A resources ROUTE TO THE CONTROLLER
+*/
+Route::resource('articles', 'ArticlesController');
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+          
+Sᴛᴇᴘ 27
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L30: CREATE THE CREATE FORM FILE
+    cd resources/views
+    mkdir articles
+    cd articles
+    touche create.blade.php
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+ℙ𝕒𝕥𝕙 :
+resources/views/articles/create.blade.php
+          
+Sᴛᴇᴘ 28
+--------------------ℂ𝕠𝕕𝕖 -----------------
+@extends('layouts.app')
+
+@section('content')
+
+
+{{-- L31: CREATE THE FORM CODE --}}
+
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Create article</h3>
+            </div>
+            <div class="panel-body">
+                <form action="/articles" method="POST">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea name="content" class="form-control"></textarea>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="live" />
+                            Live
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post_on">Post On</label>
+                        <input type="datetime-local" name="post_on" class="form-control" />
+                        
+                    </div>
+                    <input type="submit" class="btn btn-success pull-right" />
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+ </div>
+@endsection
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 
+
+
+
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+          
+Sᴛᴇᴘ 29
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L32: php artisan make:model Article
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+ℙ𝕒𝕥𝕙 :
+file path
+    open new terminale
+          
+Sᴛᴇᴘ 30
+--------------------ℂ𝕠𝕕𝕖 -----------------
+    L33: php artisan make:model Article
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+
+ℙ𝕒𝕥𝕙 :
+app/Http/ArticlesController.php
+    class Article
+          
+Sᴛᴇᴘ 31
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+    /*
+    L34: Use The app/Providers/Article class Article
+    */
+    
+    use App\Article;
+    
+    /*
+    L35: Use Authentification user info
+    */
+    use Auth;
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+ℙ𝕒𝕥𝕙 :
+app/Http/ArticlesController.php
+    class Article
+          
+Sᴛᴇᴘ 32
+--------------------ℂ𝕠𝕕𝕖 -----------------
+
+    /*
+    L36: THE FORMS THAT WILL PERMETS TO PASS
+    */
+    protected $fillable = [
+        'user_id', 'content', 'live', 'post_on'
+    ];
+    
+    /*
+    L37: CHANGING THE live RETURNED CHOICE TO Boolean
+    */
+    public function setLiveAttribute($value){
+        $this->attributes['live'] = (Boolean)($value);
+    }
+
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+ℙ𝕒𝕥𝕙 :
+resources/views/articles/create.blade.php
+          
+Sᴛᴇᴘ 33
+--------------------ℂ𝕠𝕕𝕖 -----------------
+{{-- ADDING A ID FOR USER  --}}
+<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+                    
+𝔼𝕟𝕕 𝕔𝕠𝕕𝕖 ---------------------- 𝔼𝕟𝕕 𝕔𝕠𝕕𝕖
+
+
+        
+
+                        ╭┳┳━╮╱╭━╮╱╱╱╱╱╱╭━━┳╮╭╮╱╱╱╱╭━╮
+                        ┃┃┃━╋━┫━╋┳┳╮╭╮╱╰╮╭┫╰╋╋━┳┳━┫━┫
+                        ┃┃┣━┃┻┫╭┫┃┃╰┫╰╮╱┃┃┃┃┃┃┃┃┃╋┣━┃
+                        ╰━┻━┻━┻╯╰━┻━┻━╯╱╰╯╰┻┻┻┻━╋╮┣━╯
+                        ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━╯
+
+Laravel 5.3 tutorials #24 Social Network Custom Registration
+https://www.youtube.com/watch?v=Kwx7PMEID_c&index=24&list=PL3ZhWMazGi9IYymniZgqwnYuPFDvaEHJb
+
+DONT FORGATE THE COMMANDS OF MAKING THe PROFIE BLADE PAGE
+
+                    ╭━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮╭╮
+                    ┃╭╋━┳━━┳━━┳━╮╭━┳┳╯┣━╮┃┃┣╋━┳┳━╮
+                    ┃╰┫╋┃┃┃┃┃┃┃╋╰┫┃┃┃╋┃┻┫┃╰┫┃┃┃┃┻┫
+                    ╰━┻━┻┻┻┻┻┻┻━━┻┻━┻━┻━╯╰━┻┻┻━┻━╯
+
+
+        
